@@ -367,7 +367,7 @@ func (tn *tagNode) execute(execCtx *executionContext, ctx *Context) (*string, er
 	//return fmt.Sprintf("<tag='%s'>", tn.content), nil, 1
 }
 
-// The Must function is a little helper to create a template instance from string/file.
+// function is a little helper to create a template instance from string/file.
 // It checks whether FromString/FromFile returns an error; if so, it panics. 
 // If not, it returns the template instance. Is's primarily used like this:
 //     var tplExample = template.Must(template.FromFile("example.html", nil))
@@ -378,7 +378,7 @@ func Must(t *Template, err error) *Template {
 	return t
 }
 
-// Reads a template from file. If there's no templateLocator provided, 
+// FromFile reads a template from file. If there's no templateLocator provided,
 // one will be created to search for files in the same directory the template
 // file is located. file_path can either be an absolute filepath or a relative one.
 func FromFile(file_path string, locator templateLocator) (*Template, error) {
@@ -492,7 +492,7 @@ func (tpl *Template) parse() error {
 	return nil
 }
 
-// Executes the template with the given context and writes to http.ResponseWriter
+// ExecuteRW executes the template with the given context and writes to http.ResponseWriter
 // on success. Context can be nil. Nothing is written on error; instead the error
 // is being returned.
 func (tpl *Template) ExecuteRW(w http.ResponseWriter, ctx *Context) error {
@@ -504,7 +504,7 @@ func (tpl *Template) ExecuteRW(w http.ResponseWriter, ctx *Context) error {
 	return nil
 }
 
-// Executes the template with the given context (can be nil).
+// Execute executes the template with the given context (can be nil).
 func (tpl *Template) Execute(ctx *Context) (out *string, err error) {
 	defer func() {
 		rerr := recover()
